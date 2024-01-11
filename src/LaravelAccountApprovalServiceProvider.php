@@ -18,8 +18,6 @@ class LaravelAccountApprovalServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-account-approval')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-account-approval_table')
-            ->hasCommand(LaravelAccountApprovalCommand::class);
+            ->hasMigration('create_laravel-account-approval_table');
     }
 }
