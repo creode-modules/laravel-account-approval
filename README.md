@@ -15,12 +15,16 @@ You can install the package via composer:
 composer require creode/laravel-account-approval
 ```
 
+## Migrations
+
 You can publish and run the migrations with:
 
 ```bash
 php artisan vendor:publish --tag="account-approval-migrations"
 php artisan migrate
 ```
+
+## Configuration
 
 You can publish the config file with:
 
@@ -30,10 +34,54 @@ php artisan vendor:publish --tag="account-approval-config"
 
 Thie following options are available in the config file:
 
-- `users_table`: The name of the users table in the database. Defaults to `users`.
+- `users_table` - The name of the users table in the database. Defaults to `users`.
+- `redirect_route_name` - The name of the route to redirect to if the user is not approved. Defaults to `login`.
+
+## Middleware
+
+In order to prevent users from accessing the site until they have been approved, the `AccountActivated` middleware should be added to the `web` middleware group in `app/Http/Kernel.php`:
+
+```php
+protected $middlewareGroups = [
+    'web' => [
+        // ...
+        \Creode\LaravelAccountApproval\Http\Middleware\AccountActivated::class,
+    ],
+    // ...
+];
+```
+
+This middleware will run on every request, detect if the user is logged in and if they are not approved, redirect them to the `login` route. This route can be configured in the `config/account-approval.php` file.
+
+## Extending Middleware
+
+If you need to execute some custom functionality for the current website you can extend the `AccountActivated` middleware and override the `accountNotActivated` method. This will allow you to execute your custom functionality instead of the redirect.
+
+```php
+namespace App\Http\Middleware;
+
+use Closure;
+use Creode\LaravelAccountApproval\Http\Middleware\AccountActivated as BaseAccountActivated;
+
+class AccountActivated extends BaseAccountActivated
+{
+    /**
+     * Handle a failed activation.
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @param \Closure  $next
+     *
+     * @return mixed
+     */
+    public function accountNotActivated(Request $request, Closure $next)
+    {
+        // Your custom functionality here
+    }
+}
+```
 
 ## Usage
-Following package installation, running the migrations command will add a `requires_approval` column to the users table. This defaults to `false` for all users. It is assumed this is the best configuration to get a site up and running. This migration can be changed to set the default to `true` if required.
+Following package installation, running the migrations command will add an `activated` column to the users table. This defaults to `false` for all users. It is assumed this is the best configuration to get a site up and running quickly.
 
 Alternatively, running the seeder provided in this module will set all existing users to be approved. This can be run with the following command:
 
