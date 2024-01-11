@@ -18,6 +18,7 @@ class LaravelAccountApprovalServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-account-approval')
             ->hasConfigFile()
-            ->hasMigration('create_laravel-account-approval_table');
+            ->hasMigration('add_activated_field_to_users_table')
+            ->runsMigrations();
     }
 }
