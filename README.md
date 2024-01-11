@@ -18,35 +18,30 @@ composer require creode/laravel-account-approval
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-account-approval-migrations"
+php artisan vendor:publish --tag="account-approval-migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-account-approval-config"
+php artisan vendor:publish --tag="account-approval-config"
 ```
 
-This is the contents of the published config file:
+Thie following options are available in the config file:
 
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-account-approval-views"
-```
+- `users_table`: The name of the users table in the database. Defaults to `users`.
 
 ## Usage
+Following package installation, running the migrations command will add a `requires_approval` column to the users table. This defaults to `false` for all users. It is assumed this is the best configuration to get a site up and running. This migration can be changed to set the default to `true` if required.
 
-```php
-$laravelAccountApproval = new Creode\LaravelAccountApproval();
-echo $laravelAccountApproval->echoPhrase('Hello, Creode!');
+Alternatively, running the seeder provided in this module will set all existing users to be approved. This can be run with the following command:
+
+```bash
+php artisan db:seed --class="Creode\LaravelAccountApproval\Database\Seeders\AccountApprovalSeeder"
 ```
+
+This will resolve the default authentication model and set the activated flag to `true` for all users.
 
 ## Testing
 

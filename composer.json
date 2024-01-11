@@ -35,7 +35,7 @@
     "autoload": {
         "psr-4": {
             "Creode\\LaravelAccountApproval\\": "src/",
-            "Creode\\LaravelAccountApproval\\Database\\Factories\\": "database/factories/"
+            "Creode\\LaravelAccountApproval\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
@@ -73,10 +73,7 @@
         "laravel": {
             "providers": [
                 "Creode\\LaravelAccountApproval\\LaravelAccountApprovalServiceProvider"
-            ],
-            "aliases": {
-                "LaravelAccountApproval": "Creode\\LaravelAccountApproval\\Facades\\LaravelAccountApproval"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
