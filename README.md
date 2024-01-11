@@ -1,4 +1,4 @@
-# A Laravel package which provides basic functionality for users to require account approval after registration.
+# Laravel Account Approval
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/creode/laravel-account-approval.svg?style=flat-square)](https://packagist.org/packages/creode/laravel-account-approval)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/creode-modules/laravel-account-approval/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/creode-modules/laravel-account-approval/actions?query=workflow%3Arun-tests+branch%3Amain)
