@@ -4,7 +4,6 @@ namespace Creode\LaravelAccountApproval;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Creode\LaravelAccountApproval\Commands\LaravelAccountApprovalCommand;
 
 class LaravelAccountApprovalServiceProvider extends PackageServiceProvider
 {

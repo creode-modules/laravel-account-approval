@@ -10,7 +10,7 @@ return new class extends Migration
     public function up()
     {
         $usersTable = config('account-approval.users-table', 'users');
-        if (!Schema::hasTable($usersTable)) {
+        if (! Schema::hasTable($usersTable)) {
             throw new MigrationException("The '$usersTable' table does not exist.");
         }
 
@@ -19,9 +19,10 @@ return new class extends Migration
         });
     }
 
-    public function down() {
+    public function down()
+    {
         $usersTable = config('account-approval.users-table', 'users');
-        if (!Schema::hasTable($usersTable)) {
+        if (! Schema::hasTable($usersTable)) {
             throw new MigrationException("The '$usersTable' table does not exist.");
         }
 
