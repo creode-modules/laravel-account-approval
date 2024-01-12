@@ -55,7 +55,7 @@ This middleware will run on every request, detect if the user is logged in and i
 
 ## Extending Middleware
 
-If you need to execute some custom functionality for the current website you can extend the `AccountActivated` middleware and override the `accountNotActivated` method. This will allow you to execute your custom functionality instead of the redirect.
+If you need to execute some custom functionality for the current website you can extend the `AccountActivated` middleware and override the `accountNotActivated` method. This will allow you to execute your custom functionality. The `unverifiedAccountRedirect` function can also be overridden to allow you to redirect to a custom route and set your own messaging/functionality.
 
 ```php
 namespace App\Http\Middleware;
@@ -73,7 +73,22 @@ class AccountActivated extends BaseAccountActivated
      *
      * @return mixed
      */
-    public function accountNotActivated(Request $request, Closure $next)
+    protected function accountNotActivated(Request $request, Closure $next)
+    {
+        // Your custom functionality here
+    }
+
+    /**
+     * Redirect which will happen if the user is not activated.
+     *
+     * Return null to continue with the request.
+     *
+     * @param Request $request
+     * @param Closure $next
+     *
+     * @return Response|null
+     */
+    protected function unverifiedAccountRedirect(Request $request, Closure $next): ?Response
     {
         // Your custom functionality here
     }

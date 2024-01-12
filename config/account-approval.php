@@ -15,16 +15,4 @@ return [
     */
 
     'users_table' => 'users',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Redirect Route Name
-    |--------------------------------------------------------------------------
-    |
-    | The name of the route to redirect to if the user is not activated. By
-    | default this will be the login route but you can change this to whatever
-    | you want.
-    |
-    */
-    'redirect_route_name' => 'login',
 ];
