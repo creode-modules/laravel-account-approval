@@ -66,6 +66,9 @@ class AccountActivated
     {
         return redirect()
             ->route('login')
-            ->with('error', 'Your account has not been verified.');
+            ->with(
+                'message',
+                config('account-approval.account_not_verified_message', 'Your account is not verified. Please check your email for the verification link.')
+            );
     }
 }

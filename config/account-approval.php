@@ -15,4 +15,17 @@ return [
     */
 
     'users_table' => 'users',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Account Not Verified Message
+    |--------------------------------------------------------------------------
+    |
+    | This value is the message which is shown to the user when they try to
+    | login but their account is not verified. By default it will show a
+    | message which tells the user to check their email for the verification.
+    |
+    */
+
+    'account_not_verified_message' => 'Your account is not verified. Please check your email for the verification link.',
 ];

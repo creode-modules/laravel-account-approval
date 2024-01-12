@@ -35,7 +35,7 @@ php artisan vendor:publish --tag="account-approval-config"
 Thie following options are available in the config file:
 
 - `users_table` - The name of the users table in the database. Defaults to `users`.
-- `redirect_route_name` - The name of the route to redirect to if the user is not approved. Defaults to `login`.
+- `account_not_verified_message` - The message shown flashed to session when an account is not verified. Defaults to `Your account has not been verified. Please check your email for a verification link.`.
 
 ## Middleware
 
